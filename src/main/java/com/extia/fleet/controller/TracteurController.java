@@ -50,8 +50,12 @@ public class TracteurController {
 	 */
 	@PostMapping(path = "/new", consumes = "application/json", produces = "application/json")
 	public ResponseEntity<Object> saveTracteur(@RequestBody Tracteur tracteur) {
+		//TODO : exception management
+//		https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc
+//		if(tracteur.getCharge()>3 || tracteur.getCharge()<1)
+//			throw new IllegalArgumentException( "Charge should be 1 2 or 3");
+		
 		tracteurService.saveTracteur(tracteur);
-
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(tracteur.getId())
 				.toUri();
 		return ResponseEntity.created(location).build();

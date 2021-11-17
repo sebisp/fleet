@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.extia.fleet.utils.Charge;
+
 @Entity
 @Table(name="cargaisons")
 public class Cargaison implements Serializable{
@@ -48,6 +50,15 @@ public class Cargaison implements Serializable{
 	public String toString() {
 		return "Cargaison [id=" + id + ", identifiant=" + identifiant + ", poids=" + poids
 				+ "]";
+	}
+	//permet de définir la capacité de charge nécessaire pour porter cette cargaison
+	public static Integer getRequiredChargeStatus(Float poids) {
+		if(poids <=100F)
+			return Charge.leger.getChargeValue();
+		else if (poids <=300F) {
+			return Charge.moyen.getChargeValue();
+		}
+		else return Charge.lourd.getChargeValue();
 	}
 
 	public Long getId() {

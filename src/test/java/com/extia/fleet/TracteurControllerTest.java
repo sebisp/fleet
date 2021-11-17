@@ -17,7 +17,11 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.extia.fleet.controller.TracteurController;
 import com.extia.fleet.entities.Tracteur;
 import com.extia.fleet.repositories.TracteurRepository;
-
+/**
+ * 
+ * @author sebastien SPIESS
+ *
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 public class TracteurControllerTest {
@@ -75,6 +79,15 @@ public class TracteurControllerTest {
 		assertThat(tracDeleted.isEmpty()).isTrue();
 
 	}
+	
+	@Test
+	public void whenCreateTracteur_ThenTracteurWithNewId() {}
+	@Test
+	public void whenCreateTracteurWithNotExistingCharge_ThenError() {}
+	@Test
+	public void whenEditTracteur_IdDoesNotChange() {}
+	@Test
+	public void whenDeleteTracteurInExpedition_ThenError() {}
 	
 //	@Test
 //	public void restMethodTest() throws Exception {
